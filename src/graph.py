@@ -53,7 +53,7 @@ def retrieve(state: RAGState):
 
     for result in results["result"]["hits"]:
         context.append(result["fields"]["text"])
-        scores.append(result["result.score"])
+        scores.append(result.score)
 
     average_score = (
         sum(scores) / len(scores)
