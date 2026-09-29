@@ -53,7 +53,7 @@ def retrieve(state: RAGState):
 
     for result in results["result"]["hits"]:
         context.append(result["fields"]["text"])
-        scores.append(result["_score"])
+        scores.append(result["result.score"])
 
     average_score = (
         sum(scores) / len(scores)
@@ -74,9 +74,8 @@ def generate(state: RAGState):
     context = state["context"]
     score = state["score"]
 
-    # If retrieved content is not relevant enough,
-    # refuse to answer instead of sending unrelated
-    # content to the LLM.
+
+     
     if score < 0.30:
         return {
             "answer": (
