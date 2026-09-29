@@ -16,9 +16,10 @@ class ChatRequest(BaseModel):
 
 
 class ChatResponse(BaseModel):
-    answer: str
-    context: list[str]
-    confidence: float
+    query: str
+    final_answer: str
+    retrieved_context_chunks: list[str]
+    confidence_score: float
 
 
 @app.get("/")
@@ -39,7 +40,8 @@ def chat(request: ChatRequest):
     })
 
     return {
-        "answer": result["answer"],
-        "context": result["context"],
-        "confidence": result["score"]
+        "query": request.question,
+        "final_answer": result["answer"],
+        "retrieved_context_chunks": result["context"],
+        "confidence_score": result["score"]
     }
