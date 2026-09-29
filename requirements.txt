@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-dotenv
+pinecone
+google-genai
+langchain
+langchain-community
+langchain-text-splitters
+langgraph
+pypdf
